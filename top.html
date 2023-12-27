@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASCII Art Christmas Tree with Snow</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+    }
+    .snowflake {
+      position: fixed;
+      color: #fff;
+      z-index: 9999;
+      pointer-events: none;
+    }
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: monospace;
+      white-space: pre;
+      color: green;
+      text-align: center;
+      line-height: 0.6; /* Adjust the line height here */
+    }
+    .center .top {
+      color: yellow;
+    }
+    .center .bottom {
+      color: brown;
+    }
+  </style>
+</head>
+<body>
+  <div class="center">
+    <span class="top">*</span><br>
+    ***<br>
+    *****<br>
+    *******<br>
+    *********<br>
+    ***********<br>
+<span class="bottom">    |||</span><br>
+  </div>
+  <script>
+    setInterval(function() {
+      var snowflake = document.createElement('div');
+      snowflake.className = 'snowflake';
+      snowflake.textContent = '*';
+      snowflake.style.left = Math.random() * window.innerWidth + 'px';
+      snowflake.style.top = -50 + 'px';
+      snowflake.style.fontSize = Math.random() * 20 + 10 + 'px';
+      snowflake.style.animationDuration = Math.random() * 5 + 5 + 's'; // Increase the duration here
+      snowflake.style.animationName = 'fall';
+      document.body.appendChild(snowflake);
+
+      setTimeout(function() {
+        snowflake.parentNode.removeChild(snowflake);
+      }, 10000); // Increase the removal delay here
+    }, 200);
+
+    var style = document.createElement('style');
+    style.textContent = `
+      @keyframes fall {
+        to {
+          transform: translateY(${window.innerHeight}px);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
