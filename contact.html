@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Us</title>
+  <style>
+    body {
+      background-color: #ffffe6; /* より薄い黄色の背景色 */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      color: green; /* タイトル部分の色を緑に設定 */
+    }
+    form {
+      display: flex;
+      flex-direction: column; /* 名前、メールアドレス、メッセージを縦に並べる */
+      align-items: center;
+    }
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 200px; /* ボタン間の最大幅を設定 */
+      margin-top: 10px; /* ボタンとメッセージの間のスペースを設定 */
+    }
+  </style>
+</head>
+<body>
+  <h1>Contact Us</h1>
+  <form>
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name"><br>
+    <label for="email">Email:</label><br>
+    <input type="text" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="有効なメールアドレスを入力してください"><br>
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message"></textarea><br>
+    <div class="button-container">
+      <input type="button" value="Back" onclick="history.back()">
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+</body>
+</html>

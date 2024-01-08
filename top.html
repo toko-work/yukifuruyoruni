@@ -6,29 +6,52 @@
     body {
       background-color: black;
       color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden; /* Prevent scrollbars */
+      position: relative; /* Set the body as a relative position container for absolute positioning */
     }
     .snowflake {
-      position: fixed;
+      position: absolute;
       color: #fff;
       z-index: 9999;
       pointer-events: none;
+      animation: fall linear infinite; /* Add animation property */
     }
     .center {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
       font-family: monospace;
       white-space: pre;
-      color: green;
+      color: green; /* テキストの色を緑に設定 */
       text-align: center;
       line-height: 0.6; /* Adjust the line height here */
+      position: relative;
     }
     .center .top {
       color: yellow;
     }
     .center .bottom {
       color: brown;
+    }
+    .contact-button {
+      position: absolute;
+      top: 80%; /* Place the button near the tree */
+      left: 51%; /* Adjusted to center the button */
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      background-color: #008000; /* 背景色を緑に設定 */
+      color: #fff; /* テキストの色を白に設定 */
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px; /* Rounded corners */
+      transition: background-color 0.3s; /* Color change on hover */
+    }
+    .contact-button:hover {
+      background-color: #ffcccc; /* Hover color */
     }
   </style>
 </head>
@@ -40,8 +63,9 @@
     *******<br>
     *********<br>
     ***********<br>
-<span class="bottom">    |||</span><br>
+    <span class="bottom"> |||</span><br>
   </div>
+  <button class="contact-button" onclick="location.href='contact.html'">Contact Us</button>
   <script>
     setInterval(function() {
       var snowflake = document.createElement('div');
@@ -50,7 +74,7 @@
       snowflake.style.left = Math.random() * window.innerWidth + 'px';
       snowflake.style.top = -50 + 'px';
       snowflake.style.fontSize = Math.random() * 20 + 10 + 'px';
-      snowflake.style.animationDuration = Math.random() * 5 + 5 + 's'; // Increase the duration here
+      snowflake.style.animationDuration = (Math.random() * 5 + 5) + 's'; // Increase the duration here
       snowflake.style.animationName = 'fall';
       document.body.appendChild(snowflake);
 
@@ -65,6 +89,13 @@
         to {
           transform: translateY(${window.innerHeight}px);
         }
+      }
+      .snowflake {
+        position: absolute;
+        color: #fff;
+        z-index: 9999;
+        pointer-events: none;
+        animation: fall linear infinite; /* Add animation property */
       }
     `;
     document.head.appendChild(style);
